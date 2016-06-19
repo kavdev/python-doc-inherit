@@ -4,7 +4,7 @@ __title__ = "python-doc-inherit"
 __summary__ = "A decorator used to inherit method documentation from parent classes."
 __uri__ = "https://github.com/kavdev/python-doc-inherit/"
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 __author__ = "Alexander Kavanaugh"
 __email__ = "alex@kavdev.io"
