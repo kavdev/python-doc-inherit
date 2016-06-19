@@ -1,0 +1,6 @@
+-r base.txt
+
+# Testing tools
+coverage~=4.1
+flake8~=2.5.4
+termcolor~=1.1.0

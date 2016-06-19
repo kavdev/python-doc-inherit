@@ -1,0 +1,9 @@
+[run]
+branch = True
+source = doc_inherit
+
+omit =
+    doc_inherit/*__init__.py
+
+[html]
+directory = cover
