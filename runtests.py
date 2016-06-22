@@ -8,7 +8,7 @@ from coverage import Coverage
 from termcolor import colored
 
 
-TESTS_THRESHOLD = 82.09
+TESTS_THRESHOLD = 84.09
 
 
 def run_test_suite():

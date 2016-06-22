@@ -37,8 +37,8 @@ Install python-doc-inherit:
 Usage
 -----
 
-Simple decorator (will cause other decorators to fail)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Simple method decorator (will cause other decorators to fail)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
 
@@ -54,6 +54,29 @@ Simple decorator (will cause other decorators to fail)
     class Bar(Foo):
 
         @method_doc_inherit
+        def foo(self):
+            pass
+
+Now, ``Bar.foo.__doc__ == Bar().foo.__doc__ == Foo.foo.__doc__ == "Frobber"``
+
+
+Simple class decorator
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    from doc_inherit import class_doc_inherit
+
+    class Foo(object):
+
+        def foo(self):
+            """Frobber"""
+
+            pass
+
+    @class_doc_inherit    
+    class Bar(Foo):
+
         def foo(self):
             pass
 

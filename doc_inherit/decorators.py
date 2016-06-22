@@ -2,12 +2,15 @@
 .. module:: doc_inherit.decorators
    :synopsis: python-doc-inherit Decorators
 
-.. moduleauthor:: Shai Berger [source_]
+.. moduleauthor:: Shai Berger [source1_]
+.. moduleauthor:: Martijn Pieters [source2_]
 
-.. _source: http://code.activestate.com/recipes/576862/
+.. _source1: http://code.activestate.com/recipes/576862/
+.. _source2: http://stackoverflow.com/a/17393254
 
 """
 
+from inspect import getmembers, isroutine, ismethod
 from functools import wraps
 
 
@@ -56,3 +59,18 @@ class DocInherit(object):
 
         func.__doc__ = source.__doc__
         return func
+
+
+def class_inherit_docstrings(cls):
+    for name, func in getmembers(cls, isroutine):
+        if ismethod(func):
+            func = func.__func__
+
+        if func.__doc__:
+            continue
+
+        for parent in cls.__mro__[1:]:
+            if hasattr(parent, name):
+                func.__doc__ = getattr(parent, name).__doc__
+
+    return cls
