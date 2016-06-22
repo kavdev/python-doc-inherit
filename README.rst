@@ -1,7 +1,7 @@
 ==================
 python-doc-inherit
 ==================
-A decorator used to inherit method documentation from parent classes.
+Utilities to inherit method documentation from parent classes.
 
 Badges
 ------
@@ -25,8 +25,8 @@ Badges
 .. image:: https://img.shields.io/github/license/kavdev/python-doc-inherit.svg?style=flat-square
         :target: https://github.com/kavdev/python-doc-inherit/blob/master/LICENSE
 
-Usage
------
+Installation
+------------
 
 Install python-doc-inherit:
 
@@ -34,7 +34,11 @@ Install python-doc-inherit:
 
     pip install python-doc-inherit
 
-Put it to use:
+Usage
+-----
+
+Simple decorator (will cause other decorators to fail)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
 
@@ -51,9 +55,30 @@ Put it to use:
 
         @method_doc_inherit
         def foo(self):
-            pass 
+            pass
 
 Now, ``Bar.foo.__doc__ == Bar().foo.__doc__ == Foo.foo.__doc__ == "Frobber"``
+
+
+Metaclass
+~~~~~~~~~
+
+.. code-block:: python
+
+    from doc_inherit.metaclasses import DocStringInheritor
+    from six import add_metaclass  # Note: Six is not included in this distribution.
+
+    class Animal:
+        def move_to(self, dest):
+            """Move to *dest*"""
+            pass
+
+    @add_metaclass(DocStringInheritor)
+    class Bird(Animal):
+        def move_to(self, dest):
+            pass
+
+Now, ``Animal.move_to.__doc__ == Bird.move_to.__doc__ == "Move to *dest*"``
 
 
 Running the Tests

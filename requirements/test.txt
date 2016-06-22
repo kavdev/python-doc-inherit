@@ -1,5 +1,8 @@
 -r base.txt
 
+# Python 2 Compat
+six~=1.10.0
+
 # Testing tools
 coverage~=4.1
 flake8~=2.5.4

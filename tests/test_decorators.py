@@ -2,7 +2,9 @@
 .. module:: tests.decorators
    :synopsis: python-doc-inherit Decorator tests
 
-.. moduleauthor:: Alex Kavanaugh (@kavdev)
+.. moduleauthor:: Shai Berger [source_]
+
+.. _source: http://code.activestate.com/recipes/576862/
 
 """
 
